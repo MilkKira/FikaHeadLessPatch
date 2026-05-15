@@ -42,6 +42,7 @@
         <Compile Include="Patches\HeadlessWebSocketConnectPatch.cs" />
         <Compile Include="Patches\RaidStartTaskPatch.cs" />
         <Compile Include="Patches\RunPluginValidationPatch.cs" />
+        <Compile Include="Patches\TyfonUiFixesFikaSyncPatch.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
 

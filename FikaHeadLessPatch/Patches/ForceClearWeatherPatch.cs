@@ -50,7 +50,7 @@ internal static class ForceClearWeatherPatch
             var type = customRaidSettings.GetType();
             const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
 
-            var property = AccessTools.Property(type, "UseCustomWeather");
+            var property = type.GetProperty("UseCustomWeather", flags);
             if (property?.CanWrite == true)
             {
                 property.SetValue(customRaidSettings, false);
@@ -78,7 +78,7 @@ internal static class ForceClearWeatherPatch
         const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
         var type = instance.GetType();
 
-        var property = AccessTools.Property(type, name);
+        var property = type.GetProperty(name, flags);
         if (property?.CanWrite == true)
         {
             property.SetValue(instance, value);
@@ -100,7 +100,7 @@ internal static class ForceClearWeatherPatch
         const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
         var type = instance.GetType();
 
-        var property = AccessTools.Property(type, name);
+        var property = type.GetProperty(name, flags);
         if (property != null)
         {
             return property.GetValue(instance);

@@ -7,6 +7,7 @@ namespace FikaHeadLessPatch
 {
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     [BepInDependency("com.fika.headless", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("Tyfon.UIFixes", BepInDependency.DependencyFlags.SoftDependency)]
     public sealed class FikaHeadlessStuckFixPlugin : BaseUnityPlugin
     {
         private const string PluginGuid = "com.fika.headless.stuckfix";
@@ -24,6 +25,7 @@ namespace FikaHeadLessPatch
         internal static ConfigEntry<bool> AsyncWebSocketConnect { get; private set; } = null!;
         internal static ConfigEntry<bool> ForceClearWeather { get; private set; } = null!;
         internal static ConfigEntry<bool> DisableCustomWeatherWhenForcingClear { get; private set; } = null!;
+        internal static ConfigEntry<bool> DisableTyfonUiFixesFikaSync { get; private set; } = null!;
 
         private Harmony? _harmony;
 
@@ -103,6 +105,12 @@ namespace FikaHeadLessPatch
                 "Disable Custom Weather When Forcing Clear",
                 true,
                 "Disable Fika custom weather curves when Force Clear Weather is enabled.");
+
+            DisableTyfonUiFixesFikaSync = Config.Bind(
+                "Compatibility",
+                "Disable Tyfon UIFixes Fika Sync",
+                true,
+                "Skip Tyfon.UIFixes Fika peer sync packets on headless hosts when its Fika serializer is incompatible.");
         }
     }
 }
